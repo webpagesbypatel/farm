@@ -1,0 +1,688 @@
+/* style.css */
+
+/* Global Styles and Font Reset */
+body {
+    font-family: 'Open Sans', sans-serif; /* New body font */
+    margin: 0;
+    color: #333;
+    background-color: #f8f8f8;
+    line-height: 1.7; /* Improved line height for readability */
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* New heading font */
+    font-weight: 700;
+    color: #2d3e50;
+    line-height: 1.3; /* Adjusted heading line height */
+    margin-top: 1em;
+    margin-bottom: 0.6em; /* Adjusted heading margin */
+  }
+  
+  p {
+    margin-bottom: 1.2em; /* Adjusted paragraph margin */
+    color: #555;
+    font-weight: 400; /* Body text font weight */
+  }
+  
+  a {
+    color: #c29963;
+    text-decoration: none;
+    transition: color 0.3s ease, font-weight 0.3s ease; /* Added font-weight transition */
+  }
+  
+  a:hover {
+    color: #9b784f;
+    font-weight: 600; /* Slightly bolder on hover */
+  }
+  
+  .container {
+    width: 92%; /* Slightly wider container */
+    max-width: 1250px; /* Increased max width */
+    margin: 0 auto;
+    padding: 0 25px; /* Adjusted container padding */
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: #fff;
+    padding: 22px 0; /* Adjusted navbar padding */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07); /* Slightly stronger shadow */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transform: translateY(-100%);
+    animation: slideDown 0.6s forwards 0.3s ease-out; /* Slightly longer slide down */
+  }
+  
+  @keyframes slideDown {
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar .logo {
+    font-family: 'Montserrat', serif; /* Logo font same as headings for consistency */
+    font-size: 2em; /* Increased logo size */
+    color: #2d3e50;
+    font-weight: 700;
+    letter-spacing: -0.5px; /* Adjusted letter spacing */
+  }
+  
+  .navbar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-list li {
+    margin-left: 30px; /* Increased spacing between nav items */
+  }
+  
+  .navbar-list li:first-child {
+    margin-left: 0;
+  }
+  
+  .navbar-list li a {
+    display: block;
+    padding: 12px 0; /* Adjusted link padding */
+    font-weight: 400;
+    position: relative;
+    color: #555; /* Slightly darker nav link color */
+    font-size: 1.05em; /* Slightly larger nav link size */
+  }
+  
+  .navbar-list li a::after {
+    content: '';
+    position: absolute;
+    bottom: 7px; /* Adjusted underline position */
+    left: 0;
+    width: 0%;
+    height: 2.5px; /* Slightly thicker underline */
+    background-color: #c29963;
+    transition: width 0.5s cubic-bezier(0.215, 0.610, 0.355, 1); /* Smoother underline animation */
+  }
+  
+  .navbar-list li a:hover::after {
+    width: 100%;
+  }
+  
+  /* Hero Section Styles */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh; /* Increased hero height */
+    padding: 60px 0; /* Adjusted hero padding */
+    position: relative;
+    overflow: hidden;
+  }
+   
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(245, 245, 220, 0.2), rgba(220, 230, 245, 0.2)); /* Softer overlay */
+    background-size: 220px 220px; /* Slightly larger pattern size */
+    opacity: 0.2; /* Softer overlay opacity */
+    animation: backgroundPan 12s linear infinite; /* Slower background pan */
+  }
+  
+  @keyframes backgroundPan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+  }
+  
+  .hero-image-container {
+    flex: 1.5;
+    overflow: hidden;
+    border-radius: 12px; /* More rounded image corners */
+    box-shadow: 6px 6px 25px rgba(0,0,0,0.12); /* More pronounced hero image shadow */
+    margin-right: 40px; /* Increased spacing between image and text */
+    opacity: 0;
+    transform: translateX(-60px); /* Increased slide in distance */
+    animation: slideInLeft 1.1s forwards 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncier slide in */
+  }
+  
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); /* Smoother, slightly slower zoom */
+  }
+  
+  .hero-image-container:hover .hero-image {
+    transform: scale(1.07); /* Slightly more zoom on hover */
+  }
+  
+  .hero-text {
+    flex: 1;
+    padding-left: 30px; /* Increased left padding */
+    opacity: 0;
+    transform: translateY(40px); /* Increased slide up distance */
+    animation: fadeInUp 1.1s forwards 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncier fade in up */
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .hero-text .since {
+    font-size: 1.2em; /* Slightly larger since text */
+    color: #888; /* Softer since text color */
+    margin-bottom: 0.6em; /* Adjusted margin */
+    font-style: italic; /* Italic since text */
+  }
+  
+  #hero-title {
+    font-size: 4em; /* Increased hero title size */
+    margin-bottom: 20px; /* Increased title margin */
+    letter-spacing: -1.5px; /* Adjusted letter spacing */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.07); /* Slightly stronger text shadow */
+  }
+  
+  .labels {
+    display: flex;
+    gap: 12px; /* Increased label gap */
+    margin-top: 25px; /* Increased label margin */
+  }
+  
+  .label {
+    background-color: #f0e6d4;
+    color: #666; /* Darker label text color */
+    padding: 10px 20px; /* Increased label padding */
+    border-radius: 30px; /* More rounded labels */
+    font-size: 0.95em; /* Adjusted label font size */
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.07); /* Slightly stronger label shadow */
+    font-weight: 500; /* Medium font weight for labels */
+  }
+  
+  /* Section Two Styles (About/Products/Visit) */
+  .section-two {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 70px 0; /* Adjusted section padding */
+    background-color: #fff;
+    justify-content: center;
+    gap: 40px; /* Increased column gap */
+  }
+  
+  .column {
+    flex: 1;
+    min-width: 320px; /* Increased min width for columns */
+    opacity: 0;
+    transform: translateY(50px); /* Increased slide distance for columns */
+    transition: opacity 0.9s ease, transform 0.9s ease;
+    margin-bottom: 30px; /* Increased bottom margin for columns */
+  }
+  
+  .column.column-middle {
+    flex-grow: 1.3; /* Middle column grows slightly more */
+  }
+  
+  .column:nth-child(1) { animation-delay: 0.3s; animation-name: fadeInUpColumn; animation-fill-mode: forwards; }
+  .column:nth-child(2) { animation-delay: 0.5s; animation-name: fadeInUpColumn; animation-fill-mode: forwards; }
+  .column:nth-child(3) { animation-delay: 0.7s; animation-name: fadeInUpColumn; animation-fill-mode: forwards; }
+  
+  @keyframes fadeInUpColumn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .column-image-wrapper {
+    position: relative;
+    border-radius: 12px; /* More rounded column image wrapper */
+    overflow: hidden;
+    box-shadow: 6px 6px 20px rgba(0,0,0,0.1); /* More pronounced column image shadow */
+    cursor: pointer;
+  }
+  
+  .column-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); /* Smoother column image zoom */
+  }
+  
+  .column-image-wrapper:hover .column-image {
+    transform: scale(1.05); /* Slightly more column image zoom */
+  }
+  
+  .content-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95); /* Less transparent content box */
+    padding: 25px; /* Increased content box padding */
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); /* Smoother content box slide up */
+  }
+  
+  .column-image-wrapper:hover .content-box {
+    transform: translateY(0);
+  }
+  
+  .content-box h2 {
+    font-size: 1.7em; /* Larger content box heading */
+    margin-bottom: 12px; /* Adjusted margin */
+    color: #2d3e50;
+    letter-spacing: -0.3px; /* Adjusted letter spacing */
+  }
+  
+  .content-box a {
+    display: inline-block;
+    padding: 12px 25px; /* Adjusted button padding */
+    background-color: #c29963;
+    color: #fff;
+    border-radius: 7px; /* Slightly more rounded button */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 4px 4px 9px rgba(0,0,0,0.09); /* Slightly stronger button shadow */
+  }
+  
+  .content-box a:hover {
+    background-color: #9b784f;
+    transform: scale(1.04); /* Slightly more button scale on hover */
+    box-shadow: 4px 4px 11px rgba(0,0,0,0.13); /* Slightly stronger hover button shadow */
+  }
+  
+  .column-content {
+    padding: 40px; /* Increased column content padding */
+    text-align: center;
+  }
+  
+  .yellow-text-center {
+    background-color: #fefae0;
+    border-radius: 12px; /* More rounded yellow box */
+    padding: 50px 30px; /* Increased yellow box padding */
+    box-shadow: 6px 6px 20px rgba(0,0,0,0.08); /* More pronounced yellow box shadow */
+  }
+  
+  .circle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px; /* Increased circle margin */
+  }
+  
+  .circle {
+    width: 140px; /* Larger circle size */
+    height: 140px;
+    border-radius: 50%;
+    background-color: #c29963;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.3em; /* Larger circle text size */
+    text-align: center;
+    line-height: 1.2; /* Adjusted line height for circle text */
+    animation: pulse 2.2s infinite alternate; /* Slightly slower pulse animation */
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.1); /* Circle shadow */
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); } /* Reduced pulse scale */
+  }
+  
+  .yellow-title {
+    color: #2d3e50;
+    font-size: 2.8em; /* Larger yellow title size */
+    margin-bottom: 25px; /* Increased title margin */
+    letter-spacing: -0.5px; /* Adjusted letter spacing */
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 17px 35px; /* Larger button padding */
+    background-color: #2d3e50;
+    color: #fff;
+    border-radius: 8px; /* Slightly more rounded button */
+    font-weight: bold;
+    font-size: 1.05em; /* Slightly larger button font */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 6px 6px 12px rgba(0,0,0,0.12); /* More pronounced button shadow */
+  }
+  
+  .button:hover {
+    background-color: #3a526b;
+    transform: scale(1.04); /* Slightly more button scale on hover */
+    box-shadow: 6px 6px 15px rgba(0,0,0,0.17); /* Slightly stronger hover button shadow */
+  }
+  
+  /* Testimonials Section Styles */
+  .section-testimonials {
+    padding: 90px 0; /* Increased testimonial section padding */
+    background-color: #f0e6d4;
+    text-align: center;
+  }
+  
+  .testimonial-image {
+    width: 110px; /* Larger testimonial image */
+    height: 110px;
+    border-radius: 50%;
+    margin-bottom: 25px; /* Increased image margin */
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.12); /* More pronounced testimonial image shadow */
+    border: 4px solid #fff; /* Thicker white border */
+    opacity: 0;
+    transform: scale(0.9); /* Slightly larger start scale for zoom in */
+    animation: zoomIn 1.1s forwards 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncier zoom in */
+  }
+  
+  @keyframes zoomIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .testimonial-title {
+    font-size: 2.5em; /* Larger testimonial title size */
+    margin-bottom: 35px; /* Increased title margin */
+    color: #2d3e50;
+    letter-spacing: -0.4px; /* Adjusted letter spacing */
+  }
+  
+  .testimonial-text {
+    font-size: 1.2em; /* Larger testimonial text size */
+    line-height: 1.9; /* Improved line height */
+    margin-bottom: 25px; /* Increased text margin */
+    padding: 0 60px; /* Increased side padding */
+    font-style: italic;
+    color: #777; /* Slightly lighter text color */
+    opacity: 0;
+    transform: translateY(30px); /* Increased slide down distance */
+    animation: fadeIn 1.1s forwards 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncier fade in */
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .testimonial-author {
+    font-weight: bold;
+    color: #555; /* Darker author color */
+    opacity: 0;
+    animation: fadeIn 1.1s forwards 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncier fade in */
+    font-size: 1.05em; /* Slightly larger author font */
+  }
+  
+  .testimonial-author span {
+    display: block;
+    font-weight: normal;
+    color: #888; /* Softer location color */
+    font-size: 0.95em; /* Slightly smaller location font */
+  }
+  
+  .slider-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px; /* Increased slider control margin */
+    opacity: 0;
+    animation: fadeIn 1.1s forwards 1s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncier fade in */
+  }
+  
+  .dot {
+    height: 14px; /* Larger dots */
+    width: 14px;
+    background-color: #ccc; /* Slightly lighter dot color */
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 10px; /* Increased dot margin */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform transition */
+  }
+  
+  .dot.active, .dot:hover {
+    background-color: #c29963;
+    transform: scale(1.1); /* Slight scale up on hover/active */
+  }
+  
+  /* Image Grid Section Styles */
+  .container-imageGrid {
+    padding: 70px 0; /* Adjusted image grid padding */
+    text-align: center;
+  }
+  
+  .container-imageGrid h1 {
+    font-size: 2.5em; /* Larger image grid title */
+    margin-bottom: 15px; /* Adjusted title margin */
+    color: #2d3e50;
+    letter-spacing: -0.4px; /* Adjusted letter spacing */
+  }
+  
+  .container-imageGrid p {
+    margin-bottom: 45px; /* Increased paragraph margin */
+    color: #888; /* Softer paragraph color */
+    font-size: 1.05em; /* Slightly larger paragraph font */
+  }
+  
+  .image-grid-wrapper {
+    overflow: hidden;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min column width */
+    gap: 20px; /* Increased grid gap */
+    padding: 30px; /* Increased grid padding */
+    opacity: 0;
+    transform: scale(0.9); /* Larger start scale for zoom in */
+    animation: zoomInGrid 1.1s forwards 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncier zoom in */
+  }
+  
+  @keyframes zoomInGrid {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .image-grid img {
+    width: 100%;
+    aspect-ratio: 1/1; /* Uniform square shape for images */
+    object-fit: cover; /* Cover the square area, cropping if needed */
+    display: block;
+    border-radius: 10px; /* More rounded image corners */
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); /* Smoother transitions */
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.1); /* More pronounced image shadow */
+  }
+  
+  .image-grid img:hover {
+    transform: scale(1.06); /* Slightly more image zoom on hover */
+    box-shadow: 6px 6px 15px rgba(0,0,0,0.15); /* More pronounced hover shadow */
+  }
+  
+  
+  /* Image Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px; /* Adjusted modal padding */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.92); /* Slightly darker modal background */
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 95%; /* Slightly wider modal content */
+    max-height: 95%; /* Slightly taller modal content */
+    animation-name: modalZoom;
+    animation-duration: 0.7s; /* Slightly longer modal zoom duration */
+  }
+  
+  @keyframes modalZoom {
+    from {transform: scale(0.1)}
+    to {transform: scale(1)}
+  }
+  
+  .close {
+    position: absolute;
+    top: 20px; /* Adjusted close button position */
+    right: 40px; /* Adjusted close button position */
+    color: #f1f1f1;
+    font-size: 50px; /* Larger close button size */
+    font-weight: bold;
+    transition: color 0.3s ease, opacity 0.3s ease; /* Added opacity transition */
+    opacity: 0.8; /* Slightly more opaque close button initially */
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1; /* Fully opaque on hover */
+  }
+  
+  /* Footer Styles */
+  .footer-info {
+    background-color: #fff;
+    padding: 70px 0; /* Adjusted footer padding */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-top: 1px solid #eee;
+    opacity: 0;
+    transform: translateY(60px); /* Increased slide up distance */
+    animation: slideUpFooter 1.1s forwards 1.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncier slide up */
+  }
+  
+  @keyframes slideUpFooter {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .footer-info > div {
+    margin-bottom: 30px; /* Increased footer div margin */
+    text-align: left;
+  }
+  
+  .footer-info h3 {
+    font-size: 1.4em; /* Larger footer heading */
+    color: #444; /* Slightly darker footer heading color */
+    margin-bottom: 18px; /* Increased heading margin */
+  }
+  
+  .footer-info p {
+    font-size: 1em; /* Slightly larger footer paragraph size */
+    color: #777; /* Slightly lighter paragraph color */
+    margin-bottom: 10px; /* Increased paragraph margin */
+  }
+  
+  .footer-info .testimonial-image {
+    margin-bottom: 20px; /* Increased footer image margin */
+    box-shadow: none;
+    border-width: 3px; /* Thicker footer image border */
+  }
+  
+  .bottom-text {
+    background-color: #f8f8f8;
+    padding: 25px 0; /* Adjusted bottom text padding */
+    text-align: center;
+    border-top: 1px solid #eee;
+    font-size: 0.95em; /* Slightly smaller bottom text font */
+    color: #888; /* Softer bottom text color */
+    opacity: 0;
+    animation: fadeIn 1.1s forwards 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncier fade in */
+  }
+  
+  .bottom-text a {
+    color: #c29963;
+    font-weight: 500; /* Medium font weight for bottom links */
+  }
+  
+  .social-icons {
+    margin-bottom: 20px; /* Increased social icon margin */
+  }
+  
+  .social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Larger social icons */
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e0e0e0; /* Lighter icon background */
+    color: #666; /* Darker icon color */
+    margin: 0 10px; /* Increased icon margin */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    background-color: #c29963;
+    color: #fff;
+    transform: scale(1.15); /* More scale up on social icon hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero-image-container {
+      margin-right: 0;
+      margin-bottom: 40px;
+    }
+    #hero-title {
+      font-size: 3.2em;
+    }
+    .labels {
+      justify-content: center;
+    }
+    .section-two {
+      padding: 50px 0;
+    }
+    .column {
+      min-width: 95%; /* Columns take almost full width on small screens */
+    }
+    .testimonial-text {
+      padding: 0 30px; /* Adjusted side padding for testimonial text on small screens */
+    }
+    .footer-info {
+      justify-content: center;
+      text-align: center;
+    }
+    .footer-info > div {
+      text-align: center;
+    }
+  }
