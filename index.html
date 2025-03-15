@@ -13,7 +13,10 @@
   <nav class="navbar">
     <div class="container">
       <a href="/" class="logo">Patel's Farm</a>
-      <ul class="navbar-list">
+      <button class="hamburger" id="hamburger-icon">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="navbar-list" id="nav-menu">
         <li><a href="#">About the Farm</a></li>
         <li><a href="#">Shop Products</a></li>
         <li><a href="#">FAQ</a></li>
@@ -174,6 +177,14 @@
       if (event.target == modal) {
         modal.style.display = "none";
       }
+    });
+
+    // Hamburger Menu JavaScript
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburgerIcon.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
     });
   </script>
      <link rel="stylesheet" href="style.css">
