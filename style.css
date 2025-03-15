@@ -107,6 +107,16 @@ a:hover {
   width: 100%;
 }
 
+/* Hamburger Icon Styles */
+.hamburger {
+  display: none; /* Hidden by default on larger screens */
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #555;
+}
+
 /* Hero Section Styles */
 .hero {
   display: flex;
@@ -535,73 +545,201 @@ a:hover {
 
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
+  .container {
+    width: 100%; /* Full width container on mobile */
+    padding: 0 20px; /* Add some padding on sides */
+  }
+
+  /* Navbar adjustments for mobile */
+  .navbar .container {
+    flex-direction: row; /* Keep logo and hamburger in a row */
+    justify-content: space-between; /* Space between logo and hamburger */
+    align-items: center; /* Align items vertically in the center */
+    padding: 10px 20px; /* Adjust padding within the navbar container */
+  }
+
+  .navbar .logo {
+    font-size: 1.8em; /* Slightly smaller logo on mobile */
+    margin-bottom: 0; /* Remove margin below logo */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger icon on mobile */
+  }
+
+  .navbar-list {
+    display: none; /* Initially hide the full nav list */
+    position: absolute;
+    top: 100%; /* Position below navbar */
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    flex-direction: column; /* Stack links vertically */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+  }
+
+  .navbar-list.show {
+    display: flex; /* Show nav list when 'show' class is added (by JS) */
+  }
+
+  .navbar-list li {
+    margin-left: 0; /* Remove left margin for stacked items */
+    margin-bottom: 10px; /* Add spacing between stacked links */
+  }
+
+  .navbar-list li:last-child {
+    margin-bottom: 0; /* Remove bottom margin from last item */
+  }
+
+  .navbar-list li a {
+    padding: 15px 20px; /* Increase padding for touch-friendliness */
+    font-size: 1.1em; /* Slightly larger font size for links */
+    display: block; /* Ensure full width for click area */
+  }
+
+  .navbar-list li a::after {
+    display: none; /* Hide underline on hover for mobile nav */
+  }
+
+  /* Hero Section adjustments for mobile */
   .hero {
       flex-direction: column;
       text-align: center;
-      padding: 40px 0;
+      padding: 30px 0; /* Reduced padding */
   }
   .hero-image-container {
       margin-right: 0;
-      margin-bottom: 30px;
-      max-width: 90%; /* Ensure image is not too wide on mobile */
+      margin-bottom: 20px; /* Reduced margin */
+      max-width: 100%; /* Image takes full width */
   }
   #hero-title {
-      font-size: 2.8em; /* Smaller title for mobile */
+      font-size: 2.5em; /* Further smaller title for mobile */
+      line-height: 1.1; /* Improved line height */
+  }
+  .hero-text .since {
+      font-size: 1em; /* Slightly smaller 'since' text */
   }
   .labels {
       justify-content: center;
+      flex-wrap: wrap; /* Allow labels to wrap */
   }
+  .label {
+      margin-bottom: 5px; /* Spacing between wrapped labels */
+      padding: 6px 12px; /* Slightly smaller label padding */
+      font-size: 0.85em; /* Slightly smaller label text */
+  }
+
+  /* Section Two adjustments */
   .section-two {
-      padding: 40px 0;
+      padding: 40px 0; /* Reduced padding */
+      gap: 20px; /* Reduced gap between columns */
   }
   .column {
-      min-width: 95%; /* Columns take almost full width on small screens */
+      min-width: 100%; /* Columns take full width */
+      margin-bottom: 20px; /* Consistent margin */
   }
   .column-middle {
-      margin-top: 0; /* Adjust spacing if needed on mobile */
+      margin-top: 0;
   }
   .yellow-text-center {
-      padding: 30px 20px; /* Less padding on yellow box for mobile */
+      padding: 30px 15px; /* Reduced padding for yellow box */
+  }
+  .yellow-title {
+      font-size: 2em; /* Slightly smaller title in yellow box */
+      line-height: 1.1;
+      margin-bottom: 15px; /* Reduced margin */
+  }
+  .circle {
+      width: 100px; /* Smaller circle */
+      height: 100px;
+      font-size: 1em; /* Smaller text in circle */
+  }
+  .button {
+      padding: 12px 25px; /* Slightly smaller button padding */
+      font-size: 0.95em; /* Slightly smaller button text */
+  }
+  .column-content p {
+      font-size: 1em; /* Adjust paragraph size in columns */
+  }
+
+  /* Testimonials Section adjustments */
+  .section-testimonials {
+      padding: 50px 0; /* Reduced padding */
+  }
+  .testimonial-image {
+      width: 80px; /* Smaller testimonial image */
+      height: 80px;
+      margin-bottom: 15px; /* Reduced margin */
+  }
+  .testimonial-title {
+      font-size: 1.8em; /* Smaller testimonial title */
+      margin-bottom: 20px; /* Reduced margin */
   }
   .testimonial-text {
-      padding: 0 30px; /* Reduce side padding for mobile */
+      padding: 0 20px; /* Further reduced side padding */
+      font-size: 1em; /* Adjust testimonial text size */
   }
-  .footer-info {
-      justify-content: center; /* Center footer columns on mobile */
-      text-align: center;
+  .testimonial-author {
+      font-size: 0.95em; /* Smaller author text */
   }
-  .footer-info > div {
-      text-align: center; /* Center text in footer divs on mobile */
-  }
-  .navbar-list {
-      display: none; /* Hide navbar list on mobile (could implement hamburger later if needed) */
-  }
-  .navbar .container {
-      flex-direction: column; /* Stack logo and potential hamburger on mobile if hamburger added */
-      align-items: center;
-  }
-  .navbar .logo {
-      margin-bottom: 10px; /* Add margin below logo on mobile if hamburger added */
-  }
+
+  /* Image Grid adjustments */
   .container-imageGrid {
-      padding: 40px 0; /* Adjust padding for image grid section on mobile */
+      padding: 40px 0; /* Reduced padding */
   }
   .container-imageGrid h1 {
-      font-size: 1.8em; /* Slightly smaller title for image grid on mobile */
+      font-size: 1.8em; /* Smaller grid title */
+      margin-bottom: 8px; /* Reduced margin */
   }
   .container-imageGrid p {
-      margin-bottom: 25px; /* Adjust paragraph margin for image grid on mobile */
+      margin-bottom: 20px; /* Reduced margin */
+      font-size: 0.95em; /* Smaller grid paragraph text */
   }
   .image-grid {
-      padding: 15px; /* Adjust padding for image grid on mobile */
-      gap: 10px; /* Adjust gap for image grid on mobile */
+      padding: 10px; /* Reduced padding around grid */
+      gap: 10px; /* Reduced gap between images */
   }
+
+  /* Modal adjustments */
   .modal {
-      padding-top: 10px; /* Adjust modal top padding on mobile */
+      padding-top: 10px;
   }
   .close {
-      top: 10px; /* Adjust close button position on modal for mobile */
-      right: 20px;
-      font-size: 30px; /* Slightly smaller close button on mobile */
+      top: 10px;
+      right: 10px;
+      font-size: 30px; /* Smaller close button */
+  }
+
+  /* Footer adjustments */
+  .footer-info {
+      justify-content: center;
+      text-align: center;
+      padding: 40px 0; /* Reduced padding */
+  }
+  .footer-info > div {
+      text-align: center;
+      margin-bottom: 25px; /* Increased bottom margin for footer columns */
+  }
+  .footer-info h3 {
+      font-size: 1.1em; /* Smaller footer heading */
+      margin-bottom: 10px; /* Reduced margin */
+  }
+  .footer-info p {
+      font-size: 0.9em; /* Adjust footer paragraph size */
+  }
+  .bottom-text {
+      padding: 15px 0; /* Reduced padding */
+      font-size: 0.85em; /* Smaller bottom text */
+  }
+  .social-icons {
+      margin-bottom: 10px; /* Reduced margin */
+  }
+  .social-icons a {
+      width: 30px; /* Smaller social icons */
+      height: 30px;
+      margin: 0 5px; /* Reduced margin */
+      font-size: 0.9em; /* Smaller social icon font */
   }
 }
