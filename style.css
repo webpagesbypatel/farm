@@ -1,745 +1,865 @@
 /* style.css */
 
 /* Global Styles and Font Reset */
+html {
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
 body {
-  font-family: 'Nunito', sans-serif;
-  margin: 0;
-  color: #333;
-  background-color: #f8f8f8;
-  line-height: 1.7;
-  overflow-x: hidden;
+font-family: 'Nunito', sans-serif;
+margin: 0;
+color: #333;
+background-color: #f8f8f8;
+line-height: 1.7;
+overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  color: #2d3e50;
-  line-height: 1.2;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
+font-family: 'Playfair Display', serif;
+font-weight: 700;
+color: #2d3e50;
+line-height: 1.2;
+margin-top: 1em;
+margin-bottom: 0.5em;
 }
 
 p {
-  margin-bottom: 1.2em;
-  color: #555;
-  font-weight: 400;
+margin-bottom: 1.2em;
+color: #555;
+font-weight: 400;
 }
 
 a {
-  color: #c29963;
-  text-decoration: none;
-  transition: color 0.3s ease, font-weight 0.3s ease;
+color: #c29963;
+text-decoration: none;
+transition: color 0.3s ease, opacity 0.3s ease; /* Added opacity transition */
 }
 
 a:hover {
-  color: #9b784f;
-  font-weight: 600;
+color: #9b784f;
+opacity: 0.85; /* Slight opacity change on hover */
 }
 
 .container {
-  width: 92%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+width: 92%;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 15px;
 }
+
+/* Simple Fade-in Animation */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+animation: fadeIn 0.8s ease-out forwards;
+opacity: 0; /* Start hidden */
+}
+
+.animate-delay-1 { animation-delay: 0.2s; }
+.animate-delay-2 { animation-delay: 0.4s; }
+.animate-delay-3 { animation-delay: 0.6s; }
+
 
 /* Navbar Styles */
 .navbar {
-  background-color: #fff;
-  padding: 20px 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+background-color: rgba(255, 255, 255, 0.98); /* Slightly transparent */
+backdrop-filter: blur(5px); /* Blur effect for modern look */
+-webkit-backdrop-filter: blur(5px);
+padding: 15px 0; /* Slightly reduced padding */
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+position: sticky;
+top: 0;
+z-index: 1000; /* Ensure navbar is above modal */
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
 .navbar .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 2em;
-  color: #2d3e50;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+font-family: 'Playfair Display', serif;
+font-size: 2em;
+color: #2d3e50;
+font-weight: 700;
+letter-spacing: -0.5px;
+transition: transform 0.3s ease;
+}
+.navbar .logo:hover {
+  transform: scale(1.03); /* Subtle scale on logo hover */
 }
 
 .navbar-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+align-items: center;
+transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Smooth transition for mobile */
 }
 
 .navbar-list li {
-  margin-left: 25px;
+margin-left: 25px;
 }
 
 .navbar-list li:first-child {
-  margin-left: 0;
+margin-left: 0;
 }
 
 .navbar-list li a {
-  display: block;
-  padding: 10px 0;
-  font-weight: 600;
-  position: relative;
-  color: #555;
-  font-size: 1.05em;
+display: block;
+padding: 10px 0;
+font-weight: 600; /* Increased font weight slightly */
+position: relative;
+color: #555;
+font-size: 1.05em;
 }
 
 .navbar-list li a::after {
-  content: '';
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background-color: #c29963;
-  transition: width 0.4s ease;
+content: '';
+position: absolute;
+bottom: 5px;
+left: 0;
+width: 0%;
+height: 2px;
+background-color: #c29963;
+transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother bezier curve */
 }
 
 .navbar-list li a:hover::after {
-  width: 100%;
+width: 100%;
 }
 
 /* Hamburger Icon Styles */
 .hamburger {
-  display: none; /* Hidden by default on larger screens */
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  color: #555;
+display: none;
+cursor: pointer;
+background: none;
+border: none;
+font-size: 1.6em; /* Slightly larger */
+color: #555;
+padding: 5px; /* Add padding for easier tapping */
+transition: transform 0.3s ease;
+}
+.hamburger:hover {
+  transform: scale(1.1);
+}
+.hamburger i {
+  transition: transform 0.3s ease; /* Add transition to icon change */
 }
 
 /* Hero Section Styles */
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 0;
-  position: relative;
-  overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 80px 0; /* Increased padding */
+position: relative;
+overflow: hidden; /* Keep overflow hidden */
+background: linear-gradient(to bottom, #fdfbfb, #f8f8f8); /* Subtle gradient background */
 }
 
 .hero-image-container {
-  flex: 1.2;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 5px 5px 20px rgba(0,0,0,0.08);
-  margin-right: 30px;
+flex: 1.2;
+overflow: hidden;
+border-radius: 10px;
+box-shadow: 5px 8px 25px rgba(0,0,0,0.1); /* Softer shadow */
+margin-right: 40px; /* Increased margin */
 }
 
 .hero-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.4s ease-out;
+width: 100%;
+height: auto;
+display: block;
+transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.4s ease; /* Smoother transition, added filter */
 }
 
 .hero-image-container:hover .hero-image {
-  transform: scale(1.05);
+transform: scale(1.04); /* Slightly less scale */
+filter: brightness(1.05); /* Subtle brightness on hover */
 }
 
 .hero-text {
-  flex: 1;
-  padding-left: 20px;
+flex: 1;
+padding-left: 20px;
 }
 
 .hero-text .since {
-  font-size: 1.1em;
-  color: #888;
-  margin-bottom: 0.5em;
+font-size: 1.1em;
+color: #888;
+margin-bottom: 0.5em;
 }
 
 #hero-title {
-  font-size: 3.5em;
-  margin-bottom: 15px;
-  letter-spacing: -1px;
+font-size: 3.8em; /* Slightly larger */
+margin-bottom: 20px;
+letter-spacing: -1.5px; /* Tighter spacing */
 }
 
 .labels {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
+display: flex;
+gap: 12px; /* Increased gap */
+margin-top: 25px; /* Increased margin */
+flex-wrap: wrap; /* Ensure wrapping if needed */
 }
 
 .label {
-  background-color: #f0e6d4;
-  color: #666;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.9em;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+background-color: #f0e6d4;
+color: #666;
+padding: 10px 18px; /* Increased padding */
+border-radius: 25px; /* More rounded */
+font-size: 0.95em; /* Slightly larger */
+box-shadow: 2px 2px 8px rgba(0,0,0,0.07);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.label:hover {
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 3px 5px 10px rgba(0,0,0,0.09);
 }
 
 /* Section Two Styles (About/Products/Visit) */
 .section-two {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 60px 0;
-  background-color: #fff;
-  justify-content: center;
-  gap: 30px;
+display: flex;
+flex-wrap: wrap;
+padding: 80px 0; /* Increased padding */
+background-color: #fff;
+justify-content: center;
+gap: 35px; /* Increased gap */
 }
 
 .column {
-  flex: 1;
-  min-width: 300px;
-  margin-bottom: 20px;
+flex: 1;
+min-width: 300px;
+margin-bottom: 20px;
+display: flex; /* Use flex for column content */
+flex-direction: column; /* Stack image wrapper and potential other content */
 }
 
 .column.column-middle {
-  flex-grow: 1.2;
+flex-grow: 1.2;
 }
 
 .column-image-wrapper {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.08);
-  cursor: pointer;
+position: relative;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 5px 5px 15px rgba(0,0,0,0.08);
+cursor: pointer;
+height: 100%; /* Make wrapper fill column height if needed */
 }
 
 .column-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease-out;
+width: 100%;
+height: 100%; /* Make image fill wrapper */
+object-fit: cover; /* Cover the area */
+display: block;
+transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.3s ease; /* Smoother, add filter */
 }
 
 .column-image-wrapper:hover .column-image {
-  transform: scale(1.03);
+transform: scale(1.05); /* Increased scale slightly */
+filter: brightness(0.95); /* Darken slightly */
 }
 
 .content-box {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  text-align: center;
-  transform: translateY(100%);
-  transition: transform 0.3s ease-out;
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+background: linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)); /* Gradient bg */
+padding: 25px 20px; /* Increased padding */
+text-align: center;
+transform: translateY(100%);
+transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+opacity: 0; /* Start hidden */
 }
 
 .column-image-wrapper:hover .content-box {
-  transform: translateY(0);
+transform: translateY(0);
+opacity: 1; /* Fade in */
 }
 
 .content-box h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  color: #2d3e50;
+font-size: 1.6em; /* Larger heading */
+margin-bottom: 10px;
+color: #2d3e50;
 }
 
 .content-box a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #c29963;
-  color: #fff;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+display: inline-block;
+padding: 12px 25px; /* Adjusted padding */
+background-color: #c29963;
+color: #fff;
+border-radius: 6px; /* Slightly more rounded */
+font-weight: bold;
+transition: background-color 0.3s ease, transform 0.3s ease;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .content-box a:hover {
-  background-color: #9b784f;
+background-color: #9b784f;
+transform: translateY(-2px); /* Lift effect */
+color: #fff; /* Ensure color stays white */
+opacity: 1; /* Override general link opacity hover */
 }
 
 .column-content {
-  padding: 30px;
-  text-align: center;
+padding: 30px;
+text-align: center;
+display: flex; /* Use flex */
+flex-direction: column; /* Stack elements */
+justify-content: center; /* Center vertically */
+height: 100%; /* Take full height */
 }
 
 .yellow-text-center {
-  background-color: #fefae0;
-  border-radius: 10px;
-  padding: 40px 25px;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.06);
+background-color: #fefae0;
+border-radius: 10px;
+padding: 50px 30px; /* Increased padding */
+box-shadow: 5px 8px 20px rgba(0,0,0,0.08); /* Softer shadow */
 }
 
 .circle-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+display: flex;
+justify-content: center;
+margin-bottom: 25px; /* Increased margin */
 }
 
 .circle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #c29963;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 1.1em;
-  text-align: center;
-  line-height: 1.2;
-  animation: pulse 2s infinite alternate;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.08);
+width: 130px; /* Slightly larger */
+height: 130px;
+border-radius: 50%;
+background-color: #c29963;
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+font-weight: bold;
+font-size: 1.1em;
+text-align: center;
+line-height: 1.2;
+animation: pulse 2.5s infinite alternate cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother pulse */
+box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.05); }
+0% { transform: scale(1); box-shadow: 4px 4px 12px rgba(0,0,0,0.1); }
+100% { transform: scale(1.06); box-shadow: 6px 6px 18px rgba(0,0,0,0.15); }
 }
 
 .yellow-title {
-  color: #2d3e50;
-  font-size: 2.2em;
-  margin-bottom: 20px;
-  letter-spacing: -0.5px;
+color: #2d3e50;
+font-size: 2.4em; /* Larger title */
+margin-bottom: 25px; /* Increased margin */
+letter-spacing: -0.5px;
 }
 
 .button {
-  display: inline-block;
-  padding: 15px 30px;
-  background-color: #2d3e50;
-  color: #fff;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
-  box-shadow: 4px 4px 8px rgba(0,0,0,0.1);
+display: inline-block;
+padding: 16px 35px; /* Larger padding */
+background-color: #2d3e50;
+color: #fff;
+border-radius: 8px; /* More rounded */
+font-weight: bold;
+font-size: 1.05em; /* Larger font */
+transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+box-shadow: 4px 4px 10px rgba(0,0,0,0.12);
+margin-top: 15px; /* Added margin top */
 }
 
 .button:hover {
-  background-color: #3a526b;
+background-color: #3a526b;
+transform: translateY(-3px); /* Lift effect */
+box-shadow: 6px 6px 15px rgba(0,0,0,0.18);
+color: #fff; /* Ensure color stays white */
+opacity: 1; /* Override general link opacity hover */
 }
 
 /* Testimonials Section Styles */
 .section-testimonials {
-  padding: 70px 0;
-  background-color: #f0e6d4;
-  text-align: center;
+padding: 80px 0; /* Increased padding */
+background-color: #f0e6d4;
+text-align: center;
 }
 
 .testimonial-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  box-shadow: 3px 3px 10px rgba(0,0,0,0.08);
-  border: 3px solid #fff;
+width: 110px; /* Slightly larger */
+height: 110px;
+border-radius: 50%;
+margin-bottom: 25px; /* Increased margin */
+box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Softer shadow */
+border: 4px solid #fff;
+transition: transform 0.4s ease;
+}
+.testimonial-image:hover {
+  transform: scale(1.08); /* Scale on hover */
 }
 
 .testimonial-title {
-  font-size: 2em;
-  margin-bottom: 30px;
-  color: #2d3e50;
-  letter-spacing: -0.4px;
+font-size: 2.2em; /* Larger title */
+margin-bottom: 35px; /* Increased margin */
+color: #2d3e50;
+letter-spacing: -0.4px;
 }
 
 .testimonial-text {
-  font-size: 1.1em;
-  line-height: 1.8;
-  margin-bottom: 20px;
-  padding: 0 50px;
-  font-style: italic;
-  color: #777;
+font-size: 1.15em; /* Slightly larger */
+line-height: 1.8;
+margin: 0 auto 25px auto; /* Centered with margin */
+max-width: 700px; /* Limit width */
+padding: 0 20px; /* Add side padding */
+font-style: italic;
+color: #6a6a6a; /* Slightly darker */
 }
 
 .testimonial-author {
-  font-weight: bold;
-  color: #555;
-  font-size: 1em;
+font-weight: bold;
+color: #444; /* Darker author name */
+font-size: 1.05em; /* Slightly larger */
 }
 
 .testimonial-author span {
-  display: block;
-  font-weight: normal;
-  color: #888;
-  font-size: 0.9em;
+display: block;
+font-weight: normal;
+color: #777; /* Slightly darker location */
+font-size: 0.95em;
+margin-top: 5px; /* Add space */
 }
 
 .slider-controls {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+display: flex;
+justify-content: center;
+margin-top: 30px; /* Increased margin */
 }
 
 .dot {
-  height: 12px;
-  width: 12px;
-  background-color: #ccc;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 0 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+height: 13px; /* Slightly larger */
+width: 13px;
+background-color: rgba(194, 153, 99, 0.4); /* Lighter, transparent base */
+border-radius: 50%;
+display: inline-block;
+margin: 0 8px;
+cursor: pointer;
+transition: background-color 0.4s ease, transform 0.3s ease;
 }
 
 .dot.active, .dot:hover {
-  background-color: #c29963;
+background-color: #c29963; /* Solid color */
+transform: scale(1.15); /* Scale effect */
 }
 
 /* Image Grid Section Styles */
 .container-imageGrid {
-  padding: 60px 0;
-  text-align: center;
+padding: 80px 0 40px 0; /* Increased top padding, reduced bottom */
+text-align: center;
 }
 
 .container-imageGrid h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-  color: #2d3e50;
-  letter-spacing: -0.4px;
+font-size: 2.2em; /* Larger title */
+margin-bottom: 15px; /* Increased margin */
+color: #2d3e50;
+letter-spacing: -0.4px;
 }
 
 .container-imageGrid p {
-  margin-bottom: 30px;
-  color: #888;
-  font-size: 1em;
+margin-bottom: 40px; /* Increased margin */
+color: #777;
+font-size: 1.05em; /* Slightly larger */
 }
 
 .image-grid-wrapper {
-  overflow: hidden;
+overflow: visible; /* Allow hover scale to show */
 }
 
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-  padding: 20px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 20px; /* Increased gap */
+padding: 20px;
 }
 
 .image-grid img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  display: block;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.06);
+width: 100%;
+aspect-ratio: 1/1;
+object-fit: cover;
+display: block;
+border-radius: 8px;
+cursor: pointer;
+transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease, filter 0.3s ease;
+box-shadow: 3px 3px 10px rgba(0,0,0,0.08);
 }
 
 .image-grid img:hover {
-  transform: scale(1.04);
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
+transform: scale(1.06); /* Slightly larger scale */
+box-shadow: 6px 6px 18px rgba(0,0,0,0.15); /* Enhanced shadow */
+filter: brightness(1.05); /* Subtle brightness */
+z-index: 10; /* Bring hovered image to front */
+position: relative; /* Needed for z-index */
 }
 
 
 /* Image Modal Styles */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  padding-top: 50px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
+display: none;
+position: fixed;
+z-index: 1001; /* Ensure modal is above navbar */
+padding-top: 60px; /* Adjusted padding */
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0,0,0,0.92); /* Slightly darker */
+backdrop-filter: blur(3px); /* Blur background slightly */
+-webkit-backdrop-filter: blur(3px);
 }
 
 .modal-content {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 90%;
-  animation-name: modalZoom;
-  animation-duration: 0.6s;
+margin: auto;
+display: block;
+max-width: 85%; /* Slightly smaller max width */
+max-height: 85vh; /* Limit height based on viewport */
+animation-name: modalZoom;
+animation-duration: 0.5s; /* Slightly faster */
+animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy effect */
+border-radius: 5px; /* Add slight radius */
 }
 
 @keyframes modalZoom {
-  from {transform: scale(0.1)}
-  to {transform: scale(1)}
+from {transform: scale(0.5); opacity: 0;}
+to {transform: scale(1); opacity: 1;}
 }
 
 .close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: color 0.3s ease;
+position: absolute;
+top: 20px; /* Adjusted position */
+right: 35px;
+color: #f1f1f1;
+font-size: 45px; /* Larger close button */
+font-weight: bold;
+transition: color 0.3s ease, transform 0.3s ease;
+line-height: 1; /* Ensure consistent alignment */
 }
 
 .close:hover,
 .close:focus {
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
+color: #fff;
+text-decoration: none;
+cursor: pointer;
+transform: scale(1.1); /* Scale close button on hover */
 }
 
 /* Footer Styles */
-.footer-info {
+.site-footer { /* Target the footer element */
   background-color: #fff;
-  padding: 60px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   border-top: 1px solid #eee;
+}
+
+.footer-info {
+/* Removed background-color and border-top from here */
+padding: 60px 0 40px 0; /* Adjusted padding */
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around; /* Keep space-around */
+max-width: 1200px; /* Limit width */
+margin: 0 auto; /* Center */
 }
 
 .footer-info > div {
-  margin-bottom: 20px;
-  text-align: left;
+margin-bottom: 30px; /* Increased margin */
+text-align: left;
+min-width: 200px; /* Minimum width for columns */
+padding: 0 15px; /* Add padding for spacing */
 }
 
 .footer-info h3 {
-  font-size: 1.2em;
-  color: #444;
-  margin-bottom: 15px;
+font-size: 1.3em; /* Slightly larger heading */
+color: #333; /* Darker heading */
+margin-bottom: 18px; /* Increased margin */
 }
 
 .footer-info p {
-  font-size: 0.9em;
-  color: #777;
-  margin-bottom: 8px;
+font-size: 0.95em; /* Slightly larger text */
+color: #666;
+margin-bottom: 10px; /* Increased margin */
+line-height: 1.6; /* Adjusted line height */
+}
+.footer-info p a { /* Style links within footer info */
+  font-weight: 600; /* Make links slightly bolder */
+}
+.footer-info p a:hover {
+  color: #9b784f;
+  text-decoration: underline; /* Add underline on hover for footer links */
+  opacity: 1;
 }
 
-.footer-info .testimonial-image {
-  margin-bottom: 15px;
-  box-shadow: none;
-  border-width: 2px;
+
+.footer-logo-image { /* Target footer logo specifically */
+width: 100px; /* Set explicit size */
+height: 100px;
+border-radius: 50%;
+margin-bottom: 15px;
+border: 2px solid #eee;
 }
 
 .bottom-text {
-  background-color: #f8f8f8;
-  padding: 20px 0;
-  text-align: center;
-  border-top: 1px solid #eee;
-  font-size: 0.9em;
-  color: #888;
+background-color: #f8f8f8;
+padding: 25px 0; /* Increased padding */
+text-align: center;
+border-top: 1px solid #eee;
+font-size: 0.9em;
+color: #888;
 }
 
 .bottom-text a {
-  color: #c29963;
-  font-weight: 500;
+color: #c29963;
+font-weight: 600; /* Bolder link */
+}
+.bottom-text a:hover {
+text-decoration: underline;
+opacity: 1;
+}
+
+.bottom-text p {
+  margin-bottom: 8px; /* Reduced margin for copyright lines */
 }
 
 .social-icons {
-  margin-bottom: 15px;
+margin-bottom: 18px; /* Increased margin */
 }
 
 .social-icons a {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: #e0e0e0;
-  color: #666;
-  margin: 0 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+width: 40px; /* Larger icons */
+height: 40px;
+border-radius: 50%;
+background-color: #e0e0e0;
+color: #666;
+margin: 0 10px; /* Increased margin */
+font-size: 1.1em; /* Larger icon font size */
+transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icons a:hover {
-  background-color: #c29963;
-  color: #fff;
+background-color: #c29963;
+color: #fff;
+transform: scale(1.1) translateY(-2px); /* Scale and lift */
 }
 
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
-  .container {
-    width: 100%; /* Full width container on mobile */
-    padding: 0 20px; /* Add some padding on sides */
+    .container {
+      width: 90%;
+      padding: 0;
+    }
+  
+    /* Navbar adjustments - KEEP AS IS */
+    .navbar { padding: 10px 0; }
+    .navbar .container { width: 100%; padding: 0 15px; }
+    .navbar .logo { font-size: 1.7em; }
+    .hamburger { display: block; font-size: 1.5em; }
+    .navbar-list {
+      display: none; position: absolute; top: calc(100% + 0px); left: 0; right: 0;
+      background-color: #fff; flex-direction: column; text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); padding: 15px 0; /* Reduced top/bottom padding slightly */
+      max-height: 0; opacity: 0; overflow: hidden;
+      transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+      border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;
+    }
+    .navbar-list.show { display: flex; max-height: 500px; opacity: 1; }
+    .navbar-list li { margin-left: 0; margin-bottom: 0; width: 100%; }
+    .navbar-list li a {
+        padding: 15px 20px; /* Slightly reduced padding */
+        font-size: 1.1em; /* Slightly reduced font size */
+        display: block; border-bottom: 1px solid #f0f0f0;
+    }
+    .navbar-list li:last-child a { border-bottom: none; }
+    .navbar-list li a::after { display: none; }
+  
+    /* Hero Section adjustments - Minor padding adjustment */
+    .hero {
+        flex-direction: column; text-align: center;
+        padding: 35px 15px; /* Slightly reduced top/bottom padding */
+    }
+    .hero-image-container {
+        margin-right: 0; margin-bottom: 20px; /* Reduced margin */
+        width: 100%; max-width: 380px; /* Slightly reduced max-width */
+    }
+    .hero-text { padding-left: 0; }
+    #hero-title {
+        font-size: 2.5em; /* Adjusted mobile title size */
+        line-height: 1.15; margin-bottom: 12px; /* Reduced margin */
+    }
+    .hero-text .since { font-size: 1em; margin-bottom: 8px; }
+    .labels { justify-content: center; gap: 8px; margin-top: 15px; } /* Reduced margin */
+    .label { padding: 7px 12px; font-size: 0.85em; } /* Slightly smaller */
+  
+    /* Section Two adjustments - *** IMAGE SIZE REDUCTION & SPACING *** */
+    .section-two {
+        padding: 40px 15px; /* Reduced top/bottom padding */
+        gap: 20px; /* Reduced gap */
+    }
+    .column {
+        min-width: 100%;
+        margin-bottom: 20px; /* Reduced margin */
+    }
+    .column:last-child {
+        margin-bottom: 0;
+    }
+    /* *** TARGETED CHANGE: Limit the height of the image wrappers *** */
+    .column-image-wrapper {
+        max-height: 280px; /* Significantly reduced max-height for images */
+        overflow: hidden; /* Ensure content box doesn't overflow if image is very short */
+    }
+    /* Ensure image covers the new, shorter wrapper */
+    .column-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .content-box { /* Adjust content box padding if needed */
+         padding: 20px 15px;
+     }
+     .content-box h2 {
+         font-size: 1.3em; /* Slightly smaller heading */
+         margin-bottom: 8px;
+     }
+      .content-box a {
+         padding: 9px 18px; /* Slightly smaller button */
+         font-size: 0.9em;
+     }
+    .yellow-text-center {
+        padding: 30px 20px; /* Reduced padding */
+    }
+    .yellow-title {
+        font-size: 2em; /* Adjusted title size */
+        line-height: 1.2;
+        margin-bottom: 15px; /* Reduced margin */
+    }
+    .circle {
+        width: 100px; /* Slightly smaller circle */
+        height: 100px;
+        font-size: 0.95em; /* Smaller text */
+        margin-bottom: 15px; /* Reduced margin */
+    }
+    .button { /* Button in yellow box */
+        padding: 12px 25px; /* Reduced padding */
+        font-size: 0.95em; /* Reduced font size */
+        margin-top: 10px; /* Reduced margin */
+    }
+    .column-content p {
+        font-size: 0.95em; /* Slightly smaller paragraph */
+        line-height: 1.6;
+    }
+  
+  
+    /* Testimonials Section adjustments - *** IMAGE SIZE REDUCTION & SPACING *** */
+    .section-testimonials {
+        padding: 45px 15px; /* Reduced padding */
+    }
+    /* *** TARGETED CHANGE: Reduce testimonial image size *** */
+    .testimonial-image {
+        width: 70px; /* Reduced size */
+        height: 70px; /* Reduced size */
+        margin-bottom: 15px; /* Reduced margin */
+    }
+    .testimonial-title {
+        font-size: 1.8em; /* Adjusted title size */
+        margin-bottom: 20px; /* Reduced margin */
+    }
+    .testimonial-text {
+        padding: 0 10px;
+        font-size: 1em; /* Adjusted text size */
+        margin-bottom: 15px; /* Reduced margin */
+        max-width: 95%;
+        line-height: 1.7; /* Ensure good line height */
+    }
+    .testimonial-author {
+        font-size: 0.95em; /* Adjusted size */
+    }
+    .testimonial-author span {
+        font-size: 0.85em; /* Adjusted size */
+    }
+    .slider-controls {
+        margin-top: 20px; /* Reduced margin */
+    }
+    .dot {
+        height: 11px; /* Slightly smaller */
+        width: 11px;
+        margin: 0 5px; /* Reduced margin */
+    }
+  
+    /* Image Grid adjustments - Minor spacing adjustments */
+    .container-imageGrid {
+        padding: 40px 15px 25px 15px; /* Adjusted padding */
+    }
+    .container-imageGrid h1 {
+        font-size: 1.8em; /* Adjusted size */
+        margin-bottom: 8px;
+    }
+    .container-imageGrid p {
+        margin-bottom: 25px; /* Reduced margin */
+        font-size: 0.95em; /* Adjusted size */
+    }
+    .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Allow slightly smaller grid items */
+        gap: 8px; /* Reduced gap */
+        padding: 0;
+    }
+  
+    /* Modal adjustments - KEEP AS IS */
+    .modal { padding-top: 20px; }
+    .modal-content { max-width: 95%; max-height: 80vh; }
+    .close { top: 15px; right: 20px; font-size: 35px; }
+  
+    /* Footer adjustments - Minor spacing adjustments */
+     .site-footer {
+         padding: 0 15px;
+     }
+    .footer-info {
+        justify-content: center; text-align: center;
+        padding: 30px 0 15px 0; /* Reduced padding */
+        flex-direction: column; align-items: center;
+    }
+    .footer-info > div {
+        text-align: center;
+        margin-bottom: 25px; /* Reduced margin */
+        min-width: auto; width: 100%; max-width: 300px; padding: 0;
+    }
+     .footer-info > div:last-child {
+         margin-bottom: 0;
+     }
+    .footer-info h3 {
+        font-size: 1.15em; /* Adjusted size */
+        margin-bottom: 10px; /* Reduced margin */
+    }
+    .footer-info p {
+        font-size: 0.9em; /* Adjusted size */
+        margin-bottom: 6px; /* Reduced margin */
+    }
+    .footer-logo-image {
+        width: 75px; /* Adjusted size */
+        height: 75px;
+        margin: 0 auto 15px auto;
+    }
+    .bottom-text {
+        padding: 15px 0; /* Reduced padding */
+        font-size: 0.8em; /* Reduced font size */
+    }
+    .social-icons {
+        margin-bottom: 10px; /* Reduced margin */
+    }
+    .social-icons a {
+        width: 32px; /* Reduced size */
+        height: 32px;
+        font-size: 0.9em; /* Adjusted icon size */
+        margin: 0 6px; /* Reduced margin */
+    }
   }
-
-  /* Navbar adjustments for mobile */
-  .navbar .container {
-    flex-direction: row; /* Keep logo and hamburger in a row */
-    justify-content: space-between; /* Space between logo and hamburger */
-    align-items: center; /* Align items vertically in the center */
-    padding: 10px 20px; /* Adjust padding within the navbar container */
-  }
-
-  .navbar .logo {
-    font-size: 1.8em; /* Slightly smaller logo on mobile */
-    margin-bottom: 0; /* Remove margin below logo */
-  }
-
-  .hamburger {
-    display: block; /* Show hamburger icon on mobile */
-  }
-
-  .navbar-list {
-    display: none; /* Initially hide the full nav list */
-    position: absolute;
-    top: 100%; /* Position below navbar */
-    left: 0;
-    right: 0;
-    background-color: #fff;
-    flex-direction: column; /* Stack links vertically */
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 15px 0;
-  }
-
-  .navbar-list.show {
-    display: flex; /* Show nav list when 'show' class is added (by JS) */
-  }
-
-  .navbar-list li {
-    margin-left: 0; /* Remove left margin for stacked items */
-    margin-bottom: 10px; /* Add spacing between stacked links */
-  }
-
-  .navbar-list li:last-child {
-    margin-bottom: 0; /* Remove bottom margin from last item */
-  }
-
-  .navbar-list li a {
-    padding: 15px 20px; /* Increase padding for touch-friendliness */
-    font-size: 1.1em; /* Slightly larger font size for links */
-    display: block; /* Ensure full width for click area */
-  }
-
-  .navbar-list li a::after {
-    display: none; /* Hide underline on hover for mobile nav */
-  }
-
-  /* Hero Section adjustments for mobile */
-  .hero {
-      flex-direction: column;
-      text-align: center;
-      padding: 30px 0; /* Reduced padding */
-  }
-  .hero-image-container {
-      margin-right: 0;
-      margin-bottom: 20px; /* Reduced margin */
-      max-width: 100%; /* Image takes full width */
-  }
-  #hero-title {
-      font-size: 2.5em; /* Further smaller title for mobile */
-      line-height: 1.1; /* Improved line height */
-  }
-  .hero-text .since {
-      font-size: 1em; /* Slightly smaller 'since' text */
-  }
-  .labels {
-      justify-content: center;
-      flex-wrap: wrap; /* Allow labels to wrap */
-  }
-  .label {
-      margin-bottom: 5px; /* Spacing between wrapped labels */
-      padding: 6px 12px; /* Slightly smaller label padding */
-      font-size: 0.85em; /* Slightly smaller label text */
-  }
-
-  /* Section Two adjustments */
-  .section-two {
-      padding: 40px 0; /* Reduced padding */
-      gap: 20px; /* Reduced gap between columns */
-  }
-  .column {
-      min-width: 100%; /* Columns take full width */
-      margin-bottom: 20px; /* Consistent margin */
-  }
-  .column-middle {
-      margin-top: 0;
-  }
-  .yellow-text-center {
-      padding: 30px 15px; /* Reduced padding for yellow box */
-  }
-  .yellow-title {
-      font-size: 2em; /* Slightly smaller title in yellow box */
-      line-height: 1.1;
-      margin-bottom: 15px; /* Reduced margin */
-  }
-  .circle {
-      width: 100px; /* Smaller circle */
-      height: 100px;
-      font-size: 1em; /* Smaller text in circle */
-  }
-  .button {
-      padding: 12px 25px; /* Slightly smaller button padding */
-      font-size: 0.95em; /* Slightly smaller button text */
-  }
-  .column-content p {
-      font-size: 1em; /* Adjust paragraph size in columns */
-  }
-
-  /* Testimonials Section adjustments */
-  .section-testimonials {
-      padding: 50px 0; /* Reduced padding */
-  }
-  .testimonial-image {
-      width: 80px; /* Smaller testimonial image */
-      height: 80px;
-      margin-bottom: 15px; /* Reduced margin */
-  }
-  .testimonial-title {
-      font-size: 1.8em; /* Smaller testimonial title */
-      margin-bottom: 20px; /* Reduced margin */
-  }
-  .testimonial-text {
-      padding: 0 20px; /* Further reduced side padding */
-      font-size: 1em; /* Adjust testimonial text size */
-  }
-  .testimonial-author {
-      font-size: 0.95em; /* Smaller author text */
-  }
-
-  /* Image Grid adjustments */
-  .container-imageGrid {
-      padding: 40px 0; /* Reduced padding */
-  }
-  .container-imageGrid h1 {
-      font-size: 1.8em; /* Smaller grid title */
-      margin-bottom: 8px; /* Reduced margin */
-  }
-  .container-imageGrid p {
-      margin-bottom: 20px; /* Reduced margin */
-      font-size: 0.95em; /* Smaller grid paragraph text */
-  }
-  .image-grid {
-      padding: 10px; /* Reduced padding around grid */
-      gap: 10px; /* Reduced gap between images */
-  }
-
-  /* Modal adjustments */
-  .modal {
-      padding-top: 10px;
-  }
-  .close {
-      top: 10px;
-      right: 10px;
-      font-size: 30px; /* Smaller close button */
-  }
-
-  /* Footer adjustments */
-  .footer-info {
-      justify-content: center;
-      text-align: center;
-      padding: 40px 0; /* Reduced padding */
-  }
-  .footer-info > div {
-      text-align: center;
-      margin-bottom: 25px; /* Increased bottom margin for footer columns */
-  }
-  .footer-info h3 {
-      font-size: 1.1em; /* Smaller footer heading */
-      margin-bottom: 10px; /* Reduced margin */
-  }
-  .footer-info p {
-      font-size: 0.9em; /* Adjust footer paragraph size */
-  }
-  .bottom-text {
-      padding: 15px 0; /* Reduced padding */
-      font-size: 0.85em; /* Smaller bottom text */
-  }
-  .social-icons {
-      margin-bottom: 10px; /* Reduced margin */
-  }
-  .social-icons a {
-      width: 30px; /* Smaller social icons */
-      height: 30px;
-      margin: 0 5px; /* Reduced margin */
-      font-size: 0.9em; /* Smaller social icon font */
-  }
-}
