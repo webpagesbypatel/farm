@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Patel's Chicken Farm</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
   <nav class="navbar">
     <div class="container">
       <a href="/" class="logo">Patel's Farm</a>
-      <button class="hamburger" id="hamburger-icon">
+      <button class="hamburger" id="hamburger-icon" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
         <i class="fas fa-bars"></i>
       </button>
       <ul class="navbar-list" id="nav-menu">
@@ -27,14 +27,15 @@
 
   <section class="hero">
     <div class="hero-image-container">
-      <img src="https://static.wixstatic.com/media/84770f_1709ef8680b046ca97ee6ceeae28abe6~mv2_d_5615_3747_s_4_2.jpeg/v1/fill/w_1901,h_1120,al_t,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/84770f_1709ef8680b046ca97ee6ceeae28abe6~mv2_d_5615_3747_s_4_2.jpeg" alt="Woman feeding chickens on Patel's Chicken Farm" class="hero-image">
+      <!-- Added loading="eager" as it's likely above the fold -->
+      <img src="https://static.wixstatic.com/media/84770f_1709ef8680b046ca97ee6ceeae28abe6~mv2_d_5615_3747_s_4_2.jpeg/v1/fill/w_1901,h_1120,al_t,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/84770f_1709ef8680b046ca97ee6ceeae28abe6~mv2_d_5615_3747_s_4_2.jpeg" alt="Woman feeding chickens on Patel's Chicken Farm" class="hero-image" loading="eager">
     </div>
 
     <div class="hero-text">
-      <p class="since">Since 1927</p>
-      <h1 id="hero-title">Patel's Chicken Farm</h1>
+      <p class="since animate-fade-in">Since 1927</p>
+      <h1 id="hero-title" class="animate-fade-in animate-delay-1">Patel's Chicken Farm</h1>
 
-      <div class="labels">
+      <div class="labels animate-fade-in animate-delay-2">
         <span class="label">100% Organic</span>
         <span class="label">Free Range</span>
         <span class="label">GMO - Free</span>
@@ -45,7 +46,8 @@
   <section class="section-two">
     <div class="column">
       <div class="column-image-wrapper">
-        <img src="https://static.wixstatic.com/media/45d10e_051e0a16fe6142e8af623046a6338998~mv2_d_3926_4826_s_4_2.jpg/v1/fill/w_574,h_923,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45d10e_051e0a16fe6142e8af623046a6338998~mv2_d_3926_4826_s_4_2.jpg" alt="Eggs" class="column-image">
+        <!-- Added loading="lazy" -->
+        <img src="https://static.wixstatic.com/media/45d10e_051e0a16fe6142e8af623046a6338998~mv2_d_3926_4826_s_4_2.jpg/v1/fill/w_574,h_923,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45d10e_051e0a16fe6142e8af623046a6338998~mv2_d_3926_4826_s_4_2.jpg" alt="Eggs" class="column-image" loading="lazy">
         <div class="content-box">
           <h2>ABOUT THE FARM</h2>
           <a href="#">Our Story</a>
@@ -71,7 +73,8 @@
 
     <div class="column">
       <div class="column-image-wrapper">
-        <img src="https://static.wixstatic.com/media/45d10e_deb633fd1e674b9fb0962cd26988dab4~mv2_d_3926_4831_s_4_2.jpg/v1/fill/w_589,h_923,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45d10e_deb633fd1e674b9fb0962cd26988dab4~mv2_d_3926_4831_s_4_2.jpg" alt="Visit the farm" class="column-image">
+         <!-- Added loading="lazy" -->
+        <img src="https://static.wixstatic.com/media/45d10e_deb633fd1e674b9fb0962cd26988dab4~mv2_d_3926_4831_s_4_2.jpg/v1/fill/w_589,h_923,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45d10e_deb633fd1e674b9fb0962cd26988dab4~mv2_d_3926_4831_s_4_2.jpg" alt="Visit the farm" class="column-image" loading="lazy">
 
         <div class="content-box">
           <h2>PAY US A VISIT</h2>
@@ -84,7 +87,8 @@
 
   <section class="section-testimonials">
     <div class="container">
-      <img src="https://static.wixstatic.com/media/9d3c63_34bf094a20a041648b74b22280f23303~mv2.jpg/v1/fill/w_225,h_225,al_c,lg_1,q_80,enc_avif,quality_auto/9d3c63_34bf094a20a041648b74b22280f23303~mv2.jpg" alt="Testimonials" class="testimonial-image">
+       <!-- Added loading="lazy" -->
+      <img src="https://static.wixstatic.com/media/9d3c63_34bf094a20a041648b74b22280f23303~mv2.jpg/v1/fill/w_225,h_225,al_c,lg_1,q_80,enc_avif,quality_auto/9d3c63_34bf094a20a041648b74b22280f23303~mv2.jpg" alt="Testimonials" class="testimonial-image" loading="lazy">
       <h2 class="testimonial-title">WHAT OUR CLIENTS SAY</h2>
 
       <p class="testimonial-text">“I’m a testimonial. Click to edit me and add text that says something nice about you and your services. Let your customers review you and tell their friends how great you are.”</p>
@@ -108,71 +112,80 @@
 
     <div class="image-grid-wrapper">
       <div class="image-grid">
-         <img src="https://curlytales.com/wp-content/uploads/2023/02/photo-1508681709134-5c29540d9964_11zon.jpg" alt="Eggs and bowl">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGRRDPmbz95Sy0MBV2FneKkkwhvZ4L7Yir_qO_cTgKFY8orjJzgYbKljMuZzcvemXDA6U&usqp=CAU" alt="Chickens">
-         <img src="https://static.vecteezy.com/ti/gratis-fotos/p2/20178444-broeden-kip-en-kuikens-in-een-boerderij-foto.JPG" alt="Chicken in field">
-        <img src="https://images.squarespace-cdn.com/content/v1/5bdfc501266c07394b2a7479/1587055419417-QGSH1EEG0PXCRPYW9STQ/spanish%2Bbrunch.jpg?format=2500w" alt="Fried egg dish">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp2UlTOb5siEHbKvsI8mumhTi7XpUeEQEUlEhp_oM-RO0VPvKYjd6Izsbm53TzXWkbvIw&usqp=CAU" alt="Eggs on table">
+         <!-- Added loading="lazy" -->
+         <img src="https://curlytales.com/wp-content/uploads/2023/02/photo-1508681709134-5c29540d9964_11zon.jpg" alt="Eggs and bowl" loading="lazy">
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGRRDPmbz95Sy0MBV2FneKkkwhvZ4L7Yir_qO_cTgKFY8orjJzgYbKljMuZzcvemXDA6U&usqp=CAU" alt="Chickens" loading="lazy">
+         <img src="https://static.vecteezy.com/ti/gratis-fotos/p2/20178444-broeden-kip-en-kuikens-in-een-boerderij-foto.JPG" alt="Chicken in field" loading="lazy">
+         <img src="https://images.squarespace-cdn.com/content/v1/5bdfc501266c07394b2a7479/1587055419417-QGSH1EEG0PXCRPYW9STQ/spanish%2Bbrunch.jpg?format=2500w" alt="Fried egg dish" loading="lazy">
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp2UlTOb5siEHbKvsI8mumhTi7XpUeEQEUlEhp_oM-RO0VPvKYjd6Izsbm53TzXWkbvIw&usqp=CAU" alt="Eggs on table" loading="lazy">
        </div>
     </div>
 
     <!-- Image Modal -->
     <div id="imageModal" class="modal">
-      <span class="close">×</span>
-      <img class="modal-content" id="img01">
+      <span class="close" aria-label="Close image modal">×</span>
+      <img class="modal-content" id="img01" alt="Enlarged view">
     </div>
 
-    <div class="footer-info">
-      <div>
-        <img src="https://static.wixstatic.com/media/9d3c63_34bf094a20a041648b74b22280f23303~mv2.jpg/v1/fill/w_225,h_225,al_c,lg_1,q_80,enc_avif,quality_auto/9d3c63_34bf094a20a041648b74b22280f23303~mv2.jpg" alt="Testimonials" class="testimonial-image">
-      </div>
-      <div>
-        <h3>Details</h3>
-        <p>500 Terry Street</p>
-        <p>india, CA 94158</p>
-        <p>123-456-7890</p>
-        <p>info@mysite.com</p>
-      </div>
+    <footer class="site-footer"> <!-- Changed div to footer -->
+        <div class="footer-info">
+            <div>
+                <!-- Added loading="lazy" -->
+                <img src="https://static.wixstatic.com/media/9d3c63_34bf094a20a041648b74b22280f23303~mv2.jpg/v1/fill/w_225,h_225,al_c,lg_1,q_80,enc_avif,quality_auto/9d3c63_34bf094a20a041648b74b22280f23303~mv2.jpg" alt="Farm logo detail" class="footer-logo-image" loading="lazy">
+            </div>
+            <div>
+                <h3>Details</h3>
+                <p>500 Terry Street</p>
+                <p>india, CA 94158</p>
+                <p>123-456-7890</p>
+                <p>info@mysite.com</p>
+            </div>
 
-      <div>
-        <h3>Store Policy</h3>
-        <p>Shipping & Delivery</p>
-        <p>Term & Conditions</p>
-        <p>FAQ</p>
-      </div>
-    </div>
+            <div>
+                <h3>Store Policy</h3>
+                <p><a href="#">Shipping & Delivery</a></p> <!-- Made these links -->
+                <p><a href="#">Term & Conditions</a></p>
+                <p><a href="#">FAQ</a></p>
+            </div>
+        </div>
 
-    <div class="bottom-text">
-      <div class="social-icons">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-      <p>© 2035 by patel's Farm.</p>
-      <p>Powered and secured by <a href="">Webpagesbypatel</a></p>
-    </div>
-  </div>
+        <div class="bottom-text">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>© 2035 by Patel's Farm.</p>
+            <p>Powered and secured by <a href="#">Webpagesbypatel</a></p> <!-- Made link active -->
+        </div>
+    </footer> <!-- Changed div to footer -->
+  </div> <!-- This closing div seems misplaced, moved footer outside of container-imageGrid -->
 
   <script>
     // JavaScript for Image Modal
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("img01");
     const images = document.querySelectorAll('.image-grid img');
-    const closeBtn = document.querySelector(".close");
+    const closeBtn = document.querySelector(".modal .close"); // Made selector more specific
 
     images.forEach(img => {
       img.addEventListener('click', function() {
         modal.style.display = "block";
         modalImg.src = this.src;
+        modalImg.alt = this.alt; // Set alt text for modal image
+        document.body.style.overflow = 'hidden'; // Prevent scrolling background
       });
     });
 
-    closeBtn.addEventListener('click', function() {
-      modal.style.display = "none";
-    });
-
-    window.addEventListener('click', function(event) {
-      if (event.target == modal) {
+    function closeModal() {
         modal.style.display = "none";
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function(event) { // Use modal itself for background click
+      if (event.target == modal) {
+        closeModal();
       }
     });
 
@@ -181,9 +194,21 @@
     const navMenu = document.getElementById('nav-menu');
 
     hamburgerIcon.addEventListener('click', () => {
+      const isExpanded = hamburgerIcon.getAttribute('aria-expanded') === 'true';
+      hamburgerIcon.setAttribute('aria-expanded', !isExpanded);
       navMenu.classList.toggle('show');
+      // Optional: Change icon based on state
+      const icon = hamburgerIcon.querySelector('i');
+      if (navMenu.classList.contains('show')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+      } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+      }
     });
   </script>
      <link rel="stylesheet" href="style.css">
 </body>
 </html>
+    
